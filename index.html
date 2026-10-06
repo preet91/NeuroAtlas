@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081019">
+<meta name="description" content="NeuroAtlas — an interactive educational map of brain systems, emotional states, networks, scenarios and brain-body responses.">
+<title>NeuroAtlas — Interactive Brain</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">N</div><div><div class="brand-name">NeuroAtlas</div><div class="brand-sub">Interactive brain systems</div></div></div>
+    <div class="top-actions"><button class="ghost" id="helpBtn">How it works</button><button class="accent" id="resetAll">Reset</button></div>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="eyebrow">EXPLORE</div>
+      <button class="nav active" data-view="explore"><span>◉</span> Anatomy</button>
+      <button class="nav" data-view="states"><span>◒</span> Emotional states</button>
+      <button class="nav" data-view="scenarios"><span>◇</span> Scenario builder</button>
+      <button class="nav" data-view="networks"><span>⌁</span> Brain networks</button>
+      <button class="nav" data-view="learn"><span>▣</span> Learn</button>
+      <div class="sidebar-note"><b>Scientific mode</b><br>Activity is a qualitative educational visualization, not a measurement of an individual's brain activity.</div>
+    </aside>
+
+    <section class="workspace">
+      <div class="workspace-head">
+        <div><div class="eyebrow">BRAIN STATE</div><h1 id="pageTitle">Explore the brain</h1><p id="pageSubtitle">Rotate the model, select a structure, or choose an emotional state.</p></div>
+        <div class="state-chip" id="stateChip">NEUTRAL · 70%</div>
+      </div>
+
+      <div class="brain-stage" id="brainStage">
+        <canvas id="brainCanvas" aria-label="Interactive three-dimensional educational brain model"></canvas>
+        <div class="stage-help"><span>Drag</span> rotate&nbsp;&nbsp; <span>Scroll</span> zoom&nbsp;&nbsp; <span>Click</span> inspect</div>
+        <div class="stage-controls"><button class="control active" id="toggleRegions">Regions</button><button class="control active" id="toggleLinks">Connections</button><button class="control" id="toggleLabels">Labels</button><button class="control" id="resetCamera">Reset view</button></div>
+        <div class="legend"><span><i class="dot low"></i>lower</span><span><i class="dot mid"></i>moderate</span><span><i class="dot high"></i>higher</span></div>
+      </div>
+
+      <div class="quick-row" id="quickRow">
+        <button data-state="Fear">Fear</button><button data-state="Stress">Stress</button><button data-state="Joy">Joy</button><button data-state="Love">Love</button><button data-state="Focus">Focus</button><button data-state="Motivation">Motivation</button>
+      </div>
+    </section>
+
+    <aside class="inspector">
+      <div class="panel-head"><div class="eyebrow">INSPECTOR</div><div class="search-wrap"><input id="search" placeholder="Search brain region…" autocomplete="off"><div id="searchResults"></div></div></div>
+      <div id="inspectContent"></div>
+    </aside>
+  </main>
+
+  <section class="drawer" id="drawer">
+    <div class="drawer-inner">
+      <div class="drawer-head"><div><div class="eyebrow" id="drawerEyebrow">STATE LAB</div><h2 id="drawerTitle">Emotional states</h2></div><button class="close" id="closeDrawer">×</button></div>
+      <div id="drawerContent"></div>
+    </div>
+  </section>
+
+  <div class="modal hidden" id="helpModal"><div class="modal-card"><button class="close" id="closeHelp">×</button><div class="eyebrow">ABOUT NEUROATLAS</div><h2>A map, not a mind reader.</h2><p>NeuroAtlas is designed to teach how brain systems interact. The colors represent a qualitative model of relative engagement under an educational scenario. They are not fMRI readings and should never be interpreted as a diagnosis or a measurement of a person's actual brain activity.</p><div class="help-grid"><div><b>1 · Explore</b><span>Drag and zoom the brain. Click a structure.</span></div><div><b>2 · Change state</b><span>Choose an emotion and tune intensity.</span></div><div><b>3 · Add context</b><span>Combine sleep, stress, exercise and other factors.</span></div><div><b>4 · Think in networks</b><span>See why behavior is rarely explained by one region.</span></div></div></div></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
