@@ -1,47 +1,45 @@
 # NeuroAtlas
 
-Laptop-first interactive educational brain explorer.
+Laptop-first interactive 3-D brain explorer. The app combines real anatomical geometry with qualitative educational models for emotional states, networks, scenarios, learning and meditation concepts.
 
-## What is included
+## Deploy
 
-- Interactive 3-D-style brain visualization rendered locally with Canvas/Web APIs (no runtime CDN or npm dependency)
-- Drag rotation, scroll zoom, clickable brain structures and labels
-- Major regions including prefrontal cortex, amygdala, hippocampus, hypothalamus, thalamus, insula, ACC, nucleus accumbens, basal ganglia, brainstem, cerebellum, motor/somatosensory/visual cortex and corpus callosum
-- Emotional states: neutral, fear, stress, anger, joy, sadness, love, focus and motivation
-- State intensity control
-- Qualitative brain-state activity visualization
-- Brain-to-body explanations
-- Scenario builder with sleep deprivation, exercise, meditation, caffeine, hunger, social rejection, novelty and chronic stress
-- Network view: threat/salience, executive control, reward/motivation, memory/context and body-awareness systems
-- Learning mode covering distributed processing, context, brain-body interaction, plasticity and scientific uncertainty
-- Searchable anatomy inspector
-- Evidence-language / scientific limitation guardrails
-- Static Netlify deployment; no build step required
+This is a static Netlify site. Upload the files in this folder to a GitHub repository, connect the repository in Netlify, and use `.` as the publish directory. There is no build command.
 
-## Important scientific note
+## Important anatomy asset note
 
-This is an educational visualization. The activity levels are qualitative and illustrative. They are not fMRI readings, direct neural recordings, medical advice, diagnostic output, or a claim that one brain region produces one emotion.
+The app loads the open Brain Project anatomical GLB at runtime:
+https://github.com/itayinbarr/brainproject
 
-## Local preview
+The Brain Project describes its named 3-D anatomy as derived from Z-Anatomy / BodyParts3D and related open imaging atlases, with the 3-D assets under CC BY-SA 4.0. NeuroAtlas does not claim ownership of that anatomy asset. Keep the attribution notice in the About panel and this README when deploying.
 
-Because this is a static site, it can be opened directly as `index.html` in a modern browser. For the cleanest local preview, use any simple local HTTP server.
+The application code is the NeuroAtlas project. The anatomy asset remains subject to its own license and attribution requirements.
 
-Example with Python:
+## V2 product behavior
 
-```bash
-python3 -m http.server 8000
-```
+- Real segmented 3-D anatomical mesh loaded once.
+- Hover and click identification.
+- Large brain-first workspace.
+- Cortex opacity control for seeing deeper structures.
+- Left/right/both hemisphere controls.
+- Functional Connections mode with visible 3-D pathways.
+- Emotional-state model using qualitative labels instead of fake 0–100 neural activity numbers.
+- Stress balance: dominant / elevated / strained / adaptive / background.
+- Scenario builder with explicit Apply to brain action.
+- Brain networks with synchronized 3-D highlighting.
+- Learn mode that drives the brain visualization.
+- Meditation concepts and EEG-band education are reserved for the next content layer; the current architecture is designed so this can be added without reloading the anatomical scene.
 
-Then open `http://localhost:8000`.
+## Development
 
-## Netlify
+Serve over HTTP rather than opening `index.html` with `file://`, because the browser loads ES modules and the anatomical GLB at runtime.
 
-1. Create a new GitHub repository, e.g. `neuroatlas`.
-2. Upload `index.html`, `styles.css`, `app.js`, `netlify.toml`, and this README.
-3. In Netlify choose **Add new project → Import an existing project**.
-4. Select GitHub and the `neuroatlas` repository.
-5. Build command: leave blank.
-6. Publish directory: `.`
-7. Deploy.
+Example:
 
-Future pushes to the GitHub branch will trigger a new Netlify deployment.
+`python3 -m http.server 8787`
+
+Then open `http://localhost:8787/`.
+
+## Scientific/product boundary
+
+The colored state labels are an educational qualitative model. They are not measurements of individual neural activity, fMRI values, EEG values, diagnoses, or clinical recommendations.
